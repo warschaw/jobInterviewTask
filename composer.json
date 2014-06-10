@@ -1,5 +1,6 @@
 {
   "require": {
      "phpunit/phpunit": "4.3.*@dev"
+     "phpunit/php-code-coverage": "3.0.*@dev"
    }
 }
