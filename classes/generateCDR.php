@@ -25,9 +25,6 @@ class generateCDR extends DatabaseObject{
             $users[$i] = $randomID;
         }
         return $users;
-//        echo "<pre>";
-//        print_r($users);
-//        echo "</pre>";
         
     }
     
@@ -48,14 +45,28 @@ class generateCDR extends DatabaseObject{
 //        echo "<pre>";
 //        print_r($fullUser);
 //        echo "</pre>";
+        
+        
         return $fullUser;
+    }
+    
+    public function generateSourceNumber($fullUser) {
         
+        $sourceCall = array();
         
+        foreach ($fullUser as $user) {
+            $sourceCallRandom = $user['countryPrefix'] . " " . mt_rand(1000000000, 9999999999);
+            $sourceCallNumber =  array("userID" => $user['userID'], "sourceCall" => $sourceCallRandom);
+            array_push($sourceCall, $sourceCallNumber);
+        }
         
-        
+        //return $sourceCall;
+        echo "<pre>";
+        print_r($sourceCall);
+        echo "</pre>";
     }
 
-    private function generateCDR() {
+    public function generateFullCDR() {
         
     }
     

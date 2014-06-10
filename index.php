@@ -4,4 +4,5 @@
 <?php
 
 $gencdr = new generateCDR;
-$gencdr->userIDtoPrefix(25);
+$fullUser = $gencdr->userIDtoPrefix(25);
+$gencdr->generateSourceNumber($fullUser);
