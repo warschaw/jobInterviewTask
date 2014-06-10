@@ -11,7 +11,7 @@ class DatabaseObject {
     
     public static function find_by_id($id=0) {
         global $database;
-        $result_array = static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE id=" . $database->escape_value($id) . " LIMIT 1");
+        $result_array = static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE ".static::idcolumn."= ". $database->escape_value($id) . " LIMIT 1");
         return !empty($result_array) ? array_shift($result_array) : false;
     }
     
@@ -23,6 +23,14 @@ class DatabaseObject {
             $object_array[] = static::instantiate($row);
         }
         return $object_array;
+    }
+    
+    public static function sql_overwrite($sql="") {
+        global $database;
+         $result_set = $database->query($sql);
+         $row = $database->fetch_array($result_set);
+         
+         return $row;
     }
     
     public static function count_all() {

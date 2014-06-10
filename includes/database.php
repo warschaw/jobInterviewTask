@@ -1,11 +1,10 @@
 <?php
-//require_once($_SERVER['DOCUMENT_ROOT'] . "/php_btb/photo_gallery/includes/config.php");
 require_once (LIB_PATH.DS."config.php");
 
 class MySQLDatabase {
 	
 	private $connection;
-        public $last_query;
+        public  $last_query;
         private $magic_quotes_active;
         private $real_escape_string_exists;
         
